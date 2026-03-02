@@ -21,40 +21,50 @@ This project implements a binary breast cancer diagnosis system using Machine Le
 
 
 ---
+## Project Structure:
+BinaryCancerDiagnostic/   
+│   
+├── logistic_regression.py   
+├── SVM.py   
+├── requirements.txt  
+└── README.md  
+
+# Installation
+Follow these steps to run the project locally.
+1. Clone the repository
+
+    ```bash git clone https://github.com/GracyDP/BinaryCancerDiagnostic.git ```   
+    ```bash  cd BinaryCancerDiagnostic ```
+
+2. Create a virtual environment    
+    ```bash python -m venv venv ```  
+
+3. Activate the environment   
+   * On macOS / Linux:   
+     ```bash source venv/bin/activate```   
+   * On Windows:  
+     ```bash venv\Scripts\activate```  
+
+4. Install dependencies   
+  ```bash pip install -r requirements.txt ``` 
+
+
+After installation, run:
+
+```bash
+python cleaning_dataset.py
+python dataset_Analysis.py
+python logistic_regression.py
+python SVM.py     
+```
+
+---
 ## Medical Disclaimer
 This project is developed for **educational and research purposes only**.  
 It is **not intended for clinical use**, diagnosis, treatment, or medical decision-making.  
 Any predictions or analyses produced by the models should not be used as a substitute for professional medical advice.
 
 ---
-
-
-## How to Clone the Repository
-```bash
-git clone https://github.com/Kizorat/BinaryCancerDiagnostic
-cd BinaryCancerDiagnostic
-```
-
-## How to Set Up the Environment
-1. Create a Python virtual environment:
-```bash
-python -m venv venv
-```
-
-2. Activate the virtual environment:
-   - **Windows:**
-     ```bash
-     venv\Scripts\activate
-     ```
-   - **Linux/Mac:**
-     ```bash
-     source venv/bin/activate
-     ```
-
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
 
 ## What Has Been Done
 - **Data Cleaning**: We started by preprocessing the raw dataset to prepare it for analysis. This involved handling missing values, removing unnecessary columns, and normalizing features to ensure consistent data quality across all variables.
@@ -163,6 +173,23 @@ The 2D projection **(Figure 5)** reveals a clear separation between benign and m
 
 This confirms that discriminative information is highly concentrated and easily exploitable by classification models.
 
+
+---
+### 3D Projection
+<div align="center"> 
+  <img src="dataset\pca_3d.png" 
+      alt="Diagnostic distribution"
+      width="550"/> </br>
+Figure 6:PCA 3D projection highlighting separability in three dimensions.
+</div>
+</br>
+
+
+The PCA 2D and 3D projections show a strong separation between benign and malignant samples.  
+This explains why the **Logistic Regression model achieves 98% accuracy**: even a linear decision boundary can separate the classes well.  
+
+The **SVM model reaches 99% accuracy** because it captures subtle non-linear patterns in the data that are not fully captured by a linear model.
+
 # Supervised Classification Models
 
 After completing the exploratory data analysis, supervised learning models are applied to quantify the separability observed in the data.
@@ -196,7 +223,7 @@ The following analyses are produced:
   <img src="dataset\plot_logistic_regression\logistic_regression_analysis.png" 
       alt="Diagnostic distribution"
       width="700"/> </br>
-Figure 6: Logistic Regression results.
+Figure 7: Logistic Regression results.
 </div>
 </br>
 
@@ -239,7 +266,7 @@ The following outputs are generated:
   <img src="dataset\plot_SVM\svm_analysis.png" 
       alt="Diagnostic distribution"
       width="700"/> </br>
-Figure 7: SVM results.
+Figure 8: SVM results.
 </div>
 </br>
 
@@ -254,6 +281,14 @@ This result is particularly relevant in a medical context, where minimizing misc
 </br>  
 
 Compared to logistic regression, the SVM demonstrates superior ability to model complex decision boundaries, resulting in fewer misclassifications, especially for malignant cases.
+
+---
+
+## Future Improvements
+
+- Validate models on external datasets
+- Deploy models as a web application
+- Add cross-validation and hyperparameter tuning
 
 ---
 
@@ -276,6 +311,7 @@ Together, these models allow us to assess both linear and non-linear decision bo
 
 
 ## Project Authors
+This repository is hosted on Grazia Di Pietro's GitHub account and was collaboratively developed with Luca Giuliano.
 
 - **Grazia Di Pietro** - MSc student in Data Science and Machine Learning - [GitHub](https://github.com/GracyDP)
 - **Luca Giuliano** - MSc student in Data Science and Machine Learning- [GitHub](https://github.com/Kizorat)
